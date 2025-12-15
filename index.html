@@ -20,41 +20,90 @@
   </div>
 </header>
 
-<!-- Capa -->
+<!-- Capa estilo Astra -->
 <section class="capa">
   <div class="container">
     <h2>Arte em Madeira D.F.</h2>
-    <p>Pirografia artesanal: cada peça é única!</p>
+    <p>Transformando madeira em arte através da pirografia. Cada peça é única e artesanal.</p>
+    <a href="#galeria" class="btn">Descobre os Quadros</a>
   </div>
 </section>
 
-<!-- Galeria -->
+<!-- Galeria estilo cards -->
 <section id="galeria">
   <div class="container">
     <h2>Galeria de Quadros</h2>
-    <div class="galeria">
-      
-      <!-- Exemplo de item -->
-      <div class="item" onclick="openModal(1)">
-        <img src="quadro1.jpg" alt="Pequena casa com carrinha">
-        <p>Pequena casa com carrinha</p>
-      </div>
-      <div class="item" onclick="openModal(2)">
-        <img src="quadro2.jpg" alt="Uma Flor">
-        <p>Uma Flor</p>
-      </div>
-      <div class="item" onclick="openModal(3)">
-        <img src="quadro3.jpg" alt="Criança com balão">
-        <p>Criança com balão</p>
-      </div>
-      <!-- Repete até o quadro28 -->
-      <!-- Para economizar espaço, coloca os 28 items com id correspondente -->
+    <div class="cards">
+
+      <!-- 30 Cards dos Quadros -->
+      <script>
+      const quadros = [
+        {id:1, titulo:"Pequena casa com carrinha", img:"quadro1.jpg", desc:"Quadro em pirografia artesanal de uma pequena casa com carrinha."},
+        {id:2, titulo:"Uma Flor", img:"quadro2.jpg", desc:"Quadro representando uma flor delicada feita à mão."},
+        {id:3, titulo:"Criança com balão", img:"quadro3.jpg", desc:"Uma criança segurando um balão, detalhado em madeira."},
+        {id:4, titulo:"Camião Cesta elevatória", img:"quadro4.jpg", desc:"Quadro de um camião com cesta elevatória, pirografia artesanal."},
+        {id:5, titulo:"Placa V.N.C", img:"quadro5.jpg", desc:"Placa de V.N.C, em detalhe e relevo artesanal."},
+        {id:6, titulo:"Escavadora", img:"quadro6.jpg", desc:"Escavadora trabalhada minuciosamente em madeira."},
+        {id:7, titulo:"Trator com reboque", img:"quadro7.jpg", desc:"Trator puxando reboque, detalhe artístico."},
+        {id:8, titulo:"Igreja matriz de V.N.Ceira", img:"quadro8.jpg", desc:"Igreja matriz detalhada em pirografia."},
+        {id:9, titulo:"Fundos oceânicos", img:"quadro9.jpg", desc:"Fundo oceânico em tons de madeira e pirografia."},
+        {id:10, titulo:"Grupo de Diabéticos", img:"quadro10.jpg", desc:"Representação de grupo de diabéticos, feito artesanalmente."},
+        {id:11, titulo:"Rua Santa Rita", img:"quadro11.jpg", desc:"Rua Santa Rita detalhada em pirografia."},
+        {id:12, titulo:"Praia da cidade", img:"quadro12.jpg", desc:"Praia da cidade com elementos em relevo."},
+        {id:13, titulo:"Cerro da Candosa", img:"quadro13.jpg", desc:"Cerro da Candosa em detalhe artístico."},
+        {id:14, titulo:"Amor de mãe", img:"quadro14.jpg", desc:"Cena representando o amor de mãe em madeira."},
+        {id:15, titulo:"Portugal e sua bandeira", img:"quadro15.jpg", desc:"Bandeira de Portugal com cores e detalhes em pirografia."},
+        {id:16, titulo:"Benfica", img:"quadro16.jpg", desc:"Quadro representando o clube Benfica, feito artesanalmente."},
+        {id:17, titulo:"Natal", img:"quadro17.jpg", desc:"Quadro natalício com elementos tradicionais."},
+        {id:18, titulo:"Salgueiro Maia", img:"quadro18.jpg", desc:"Retrato de Salgueiro Maia em pirografia."},
+        {id:19, titulo:"Pão de forma", img:"quadro19.jpg", desc:"Quadro de pão de forma detalhado em madeira."},
+        {id:20, titulo:"Carocha", img:"quadro20.jpg", desc:"Veículo Carocha representado artisticamente."},
+        {id:21, titulo:"Fiat", img:"quadro21.jpg", desc:"Carro Fiat, pirografia detalhada."},
+        {id:22, titulo:"Renault Twingo", img:"quadro22.jpg", desc:"Renault Twingo em pirografia artesanal."},
+        {id:23, titulo:"Citroen 2CV", img:"quadro23.jpg", desc:"Citroen 2CV feito com técnica artística."},
+        {id:24, titulo:"Jeep", img:"quadro24.jpg", desc:"Quadro Jeep em detalhes de pirografia."},
+        {id:25, titulo:"Linha do comboio", img:"quadro25.jpg", desc:"Linha do comboio representada artisticamente."},
+        {id:26, titulo:"Locomotiva a vapor", img:"quadro26.jpg", desc:"Locomotiva a vapor em relevo de madeira."},
+        {id:27, titulo:"Mínion", img:"quadro27.jpg", desc:"Personagem Mínion em pirografia artesanal."},
+        {id:28, titulo:"Vela de Natal", img:"quadro28.jpg", desc:"Vela de Natal detalhada em madeira."},
+        {id:29, titulo:"Fazenda com animais", img:"quadro29.jpg", desc:"Cena de fazenda com animais, feita à mão."},
+        {id:30, titulo:"Montanha ao pôr do sol", img:"quadro30.jpg", desc:"Montanha ao pôr do sol em pirografia detalhada."}
+      ];
+
+      const galeriaDiv = document.querySelector('.cards');
+      quadros.forEach(q => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.onclick = () => openModal(q.id);
+        div.innerHTML = `
+          <img src="${q.img}" alt="${q.titulo}">
+          <h3>${q.titulo}</h3>
+          <p>${q.desc}</p>
+        `;
+        galeriaDiv.appendChild(div);
+      });
+
+      function openModal(id){
+        const quadro = quadros.find(q => q.id===id);
+        document.getElementById('modal-title').innerText = quadro.titulo;
+        document.getElementById('modal-img').src = quadro.img;
+        document.getElementById('modal-img').alt = quadro.titulo;
+        document.getElementById('modal-desc').innerText = quadro.desc;
+        document.getElementById('modal').style.display='block';
+      }
+      function closeModal(){
+        document.getElementById('modal').style.display='none';
+      }
+      window.onclick=function(event){
+        if(event.target==document.getElementById('modal')) closeModal();
+      }
+      </script>
 
     </div>
   </div>
 </section>
 
-<!-- Modal para informações -->
+<!-- Modal -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
@@ -68,15 +117,15 @@
 <section id="encomendas">
   <div class="container">
     <h2>Encomendas</h2>
-    <p>Para encomendas personalizadas, utilize o nosso <a href="https://forms.gle/seuformulario" target="_blank">formulário online</a>.</p>
+    <p>Para encomendas personalizadas, utiliza o nosso <a href="https://forms.gle/seuformulario" target="_blank">formulário online</a>.</p>
   </div>
 </section>
 
-<!-- Biografia do Autor -->
+<!-- Biografia -->
 <section id="biografia">
   <div class="container">
     <h2>Biografia do Autor</h2>
-    <p>Diogo é um artista português especializado em pirografia em madeira. Cada peça é feita com técnica, paciência e dedicação, refletindo a cultura e a beleza da arte artesanal.</p>
+    <p>Diogo é um artista português especializado em pirografia em madeira. Cada peça é feita com técnica, paciência e dedicação.</p>
   </div>
 </section>
 
@@ -86,37 +135,6 @@
     <p>© 2025 Pirografia do Diogo</p>
   </div>
 </footer>
-
-<!-- Script para modal -->
-<script>
-const quadros = [
-  {id:1, titulo:"Pequena casa com carrinha", img:"quadro1.jpg", desc:"Este quadro mostra uma pequena casa com uma carrinha, feito com pirografia em madeira. Cada detalhe é trabalhado manualmente."},
-  {id:2, titulo:"Uma Flor", img:"quadro2.jpg", desc:"Quadro representando uma flor delicada, pirografia artesanal."},
-  {id:3, titulo:"Criança com balão", img:"quadro3.jpg", desc:"Uma criança segurando um balão, detalhado em madeira."},
-  // Adicione aqui todos os quadros até 28
-];
-
-function openModal(id) {
-  const quadro = quadros.find(q => q.id === id);
-  document.getElementById('modal-title').innerText = quadro.titulo;
-  document.getElementById('modal-img').src = quadro.img;
-  document.getElementById('modal-img').alt = quadro.titulo;
-  document.getElementById('modal-desc').innerText = quadro.desc;
-  document.getElementById('modal').style.display = 'block';
-}
-
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
-
-// Fechar ao clicar fora do modal
-window.onclick = function(event) {
-  const modal = document.getElementById('modal');
-  if(event.target === modal) {
-    modal.style.display = 'none';
-  }
-}
-</script>
 
 </body>
 </html>

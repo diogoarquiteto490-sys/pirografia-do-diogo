@@ -11,38 +11,41 @@
 <header>
   <div class="container">
     <h1>Pirografia do Diogo</h1>
-    <nav>
-      <a href="#galeria">Quadros</a>
-      <a href="#encomendas">Encomendas</a>
-      <a href="#biografia">Biografia</a>
-    </nav>
   </div>
 </header>
 
+<!-- Capa -->
 <section class="capa">
   <div class="container">
     <h2>Arte em Madeira D.F.</h2>
     <p>Transformando madeira em arte através da pirografia. Cada peça é única e artesanal.</p>
-    <a href="#galeria" class="btn">Descobre os Quadros</a>
+    <a href="#tabs-section" class="btn">Explorar</a>
   </div>
 </section>
 
-<!-- Seção Galeria com Separadores -->
-<section id="galeria">
+<!-- Seção com 3 separadores -->
+<section id="tabs-section">
   <div class="container">
-    <h2>Galeria de Quadros</h2>
 
-    <!-- Tabs -->
+    <!-- Botões dos separadores -->
     <div class="tabs">
-      <button class="tab-button active" onclick="openTab('paisagens')">Paisagens</button>
-      <button class="tab-button" onclick="openTab('veiculos')">Veículos</button>
-      <button class="tab-button" onclick="openTab('outros')">Outros</button>
+      <button class="tab-button active" onclick="openTab('galeria')">Galeria de Quadros</button>
+      <button class="tab-button" onclick="openTab('encomendas')">Encomendas</button>
+      <button class="tab-button" onclick="openTab('biografia')">Biografia do Autor</button>
     </div>
 
-    <!-- Conteúdo dos tabs -->
-    <div class="tab-content active" id="paisagens"></div>
-    <div class="tab-content" id="veiculos"></div>
-    <div class="tab-content" id="outros"></div>
+    <!-- Conteúdo separadores -->
+    <div class="tab-content active" id="galeria"></div>
+
+    <div class="tab-content" id="encomendas">
+      <h2>Encomendas</h2>
+      <p>Para encomendas personalizadas, preencha o nosso <a href="https://forms.gle/seuformulario" target="_blank">questionário online</a>.</p>
+    </div>
+
+    <div class="tab-content" id="biografia">
+      <h2>Biografia do Autor</h2>
+      <p>Diogo é um artista português especializado em pirografia em madeira. Cada peça é feita com técnica, paciência e dedicação. Desde jovem demonstrou interesse em artesanato e hoje transforma madeira em arte, com atenção a cada detalhe.</p>
+    </div>
 
   </div>
 </section>
@@ -57,75 +60,56 @@
   </div>
 </div>
 
-<section id="encomendas">
-  <div class="container">
-    <h2>Encomendas</h2>
-    <p>Para encomendas personalizadas, utiliza o nosso <a href="https://forms.gle/seuformulario" target="_blank">formulário online</a>.</p>
-  </div>
-</section>
-
-<section id="biografia">
-  <div class="container">
-    <h2>Biografia do Autor</h2>
-    <p>Diogo é um artista português especializado em pirografia em madeira. Cada peça é feita com técnica, paciência e dedicação.</p>
-  </div>
-</section>
-
 <footer>
   <div class="container">
     <p>© 2025 Pirografia do Diogo</p>
   </div>
 </footer>
 
-<!-- Script para separar os quadros por categorias -->
+<!-- Script para gerar cards e modal -->
 <script>
 const quadros = [
-  {id:1, titulo:"Pequena casa com carrinha", img:"quadro1.jpg", categoria:"paisagens", desc:"Quadro em pirografia artesanal de uma pequena casa com carrinha."},
-  {id:2, titulo:"Uma Flor", img:"quadro2.jpg", categoria:"paisagens", desc:"Quadro representando uma flor delicada feita à mão."},
-  {id:3, titulo:"Criança com balão", img:"quadro3.jpg", categoria:"outros", desc:"Uma criança segurando um balão, detalhado em madeira."},
-  {id:4, titulo:"Camião Cesta elevatória", img:"quadro4.jpg", categoria:"veiculos", desc:"Quadro de um camião com cesta elevatória, pirografia artesanal."},
-  {id:5, titulo:"Placa V.N.C", img:"quadro5.jpg", categoria:"outros", desc:"Placa de V.N.C, em detalhe e relevo artesanal."},
-  {id:6, titulo:"Escavadora", img:"quadro6.jpg", categoria:"veiculos", desc:"Escavadora trabalhada minuciosamente em madeira."},
-  {id:7, titulo:"Trator com reboque", img:"quadro7.jpg", categoria:"veiculos", desc:"Trator puxando reboque, detalhe artístico."},
-  {id:8, titulo:"Igreja matriz de V.N.Ceira", img:"quadro8.jpg", categoria:"paisagens", desc:"Igreja matriz detalhada em pirografia."},
-  {id:9, titulo:"Fundos oceânicos", img:"quadro9.jpg", categoria:"paisagens", desc:"Fundo oceânico em tons de madeira e pirografia."},
-  {id:10, titulo:"Grupo de Diabéticos", img:"quadro10.jpg", categoria:"outros", desc:"Representação de grupo de diabéticos, feito artesanalmente."},
-  {id:11, titulo:"Rua Santa Rita", img:"quadro11.jpg", categoria:"paisagens", desc:"Rua Santa Rita detalhada em pirografia."},
-  {id:12, titulo:"Praia da cidade", img:"quadro12.jpg", categoria:"paisagens", desc:"Praia da cidade com elementos em relevo."},
-  {id:13, titulo:"Cerro da Candosa", img:"quadro13.jpg", categoria:"paisagens", desc:"Cerro da Candosa em detalhe artístico."},
-  {id:14, titulo:"Amor de mãe", img:"quadro14.jpg", categoria:"outros", desc:"Cena representando o amor de mãe em madeira."},
-  {id:15, titulo:"Portugal e sua bandeira", img:"quadro15.jpg", categoria:"outros", desc:"Bandeira de Portugal com cores e detalhes em pirografia."},
-  {id:16, titulo:"Benfica", img:"quadro16.jpg", categoria:"outros", desc:"Quadro representando o clube Benfica, feito artesanalmente."},
-  {id:17, titulo:"Natal", img:"quadro17.jpg", categoria:"outros", desc:"Quadro natalício com elementos tradicionais."},
-  {id:18, titulo:"Salgueiro Maia", img:"quadro18.jpg", categoria:"outros", desc:"Retrato de Salgueiro Maia em pirografia."},
-  {id:19, titulo:"Pão de forma", img:"quadro19.jpg", categoria:"outros", desc:"Quadro de pão de forma detalhado em madeira."},
-  {id:20, titulo:"Carocha", img:"quadro20.jpg", categoria:"veiculos", desc:"Veículo Carocha representado artisticamente."},
-  {id:21, titulo:"Fiat", img:"quadro21.jpg", categoria:"veiculos", desc:"Carro Fiat, pirografia detalhada."},
-  {id:22, titulo:"Renault Twingo", img:"quadro22.jpg", categoria:"veiculos", desc:"Renault Twingo em pirografia artesanal."},
-  {id:23, titulo:"Citroen 2CV", img:"quadro23.jpg", categoria:"veiculos", desc:"Citroen 2CV feito com técnica artística."},
-  {id:24, titulo:"Jeep", img:"quadro24.jpg", categoria:"veiculos", desc:"Quadro Jeep em detalhes de pirografia."},
-  {id:25, titulo:"Linha do comboio", img:"quadro25.jpg", categoria:"veiculos", desc:"Linha do comboio representada artisticamente."},
-  {id:26, titulo:"Locomotiva a vapor", img:"quadro26.jpg", categoria:"veiculos", desc:"Locomotiva a vapor em relevo de madeira."},
-  {id:27, titulo:"Mínion", img:"quadro27.jpg", categoria:"outros", desc:"Personagem Mínion em pirografia artesanal."},
-  {id:28, titulo:"Vela de Natal", img:"quadro28.jpg", categoria:"outros", desc:"Vela de Natal detalhada em madeira."},
-  {id:29, titulo:"Fazenda com animais", img:"quadro29.jpg", categoria:"paisagens", desc:"Cena de fazenda com animais, feita à mão."},
-  {id:30, titulo:"Montanha ao pôr do sol", img:"quadro30.jpg", categoria:"paisagens", desc:"Montanha ao pôr do sol em pirografia detalhada."}
+  {id:1,titulo:"Pequena casa com carrinha",img:"quadro1.jpg",desc:"Quadro em pirografia artesanal de uma pequena casa com carrinha."},
+  {id:2,titulo:"Uma Flor",img:"quadro2.jpg",desc:"Quadro representando uma flor delicada feita à mão."},
+  {id:3,titulo:"Criança com balão",img:"quadro3.jpg",desc:"Uma criança segurando um balão, detalhado em madeira."},
+  {id:4,titulo:"Camião Cesta elevatória",img:"quadro4.jpg",desc:"Quadro de um camião com cesta elevatória, pirografia artesanal."},
+  {id:5,titulo:"Placa V.N.C",img:"quadro5.jpg",desc:"Placa de V.N.C, em detalhe e relevo artesanal."},
+  {id:6,titulo:"Escavadora",img:"quadro6.jpg",desc:"Escavadora trabalhada minuciosamente em madeira."},
+  {id:7,titulo:"Trator com reboque",img:"quadro7.jpg",desc:"Trator puxando reboque, detalhe artístico."},
+  {id:8,titulo:"Igreja matriz de V.N.Ceira",img:"quadro8.jpg",desc:"Igreja matriz detalhada em pirografia."},
+  {id:9,titulo:"Fundos oceânicos",img:"quadro9.jpg",desc:"Fundo oceânico em tons de madeira e pirografia."},
+  {id:10,titulo:"Grupo de Diabéticos",img:"quadro10.jpg",desc:"Representação de grupo de diabéticos, feito artesanalmente."},
+  {id:11,titulo:"Rua Santa Rita",img:"quadro11.jpg",desc:"Rua Santa Rita detalhada em pirografia."},
+  {id:12,titulo:"Praia da cidade",img:"quadro12.jpg",desc:"Praia da cidade com elementos em relevo."},
+  {id:13,titulo:"Cerro da Candosa",img:"quadro13.jpg",desc:"Cerro da Candosa em detalhe artístico."},
+  {id:14,titulo:"Amor de mãe",img:"quadro14.jpg",desc:"Cena representando o amor de mãe em madeira."},
+  {id:15,titulo:"Portugal e sua bandeira",img:"quadro15.jpg",desc:"Bandeira de Portugal com cores e detalhes em pirografia."},
+  {id:16,titulo:"Benfica",img:"quadro16.jpg",desc:"Quadro representando o clube Benfica, feito artesanalmente."},
+  {id:17,titulo:"Natal",img:"quadro17.jpg",desc:"Quadro natalício com elementos tradicionais."},
+  {id:18,titulo:"Salgueiro Maia",img:"quadro18.jpg",desc:"Retrato de Salgueiro Maia em pirografia."},
+  {id:19,titulo:"Pão de forma",img:"quadro19.jpg",desc:"Quadro de pão de forma detalhado em madeira."},
+  {id:20,titulo:"Carocha",img:"quadro20.jpg",desc:"Veículo Carocha representado artisticamente."},
+  {id:21,titulo:"Fiat",img:"quadro21.jpg",desc:"Carro Fiat, pirografia detalhada."},
+  {id:22,titulo:"Renault Twingo",img:"quadro22.jpg",desc:"Renault Twingo em pirografia artesanal."},
+  {id:23,titulo:"Citroen 2CV",img:"quadro23.jpg",desc:"Citroen 2CV feito com técnica artística."},
+  {id:24,titulo:"Jeep",img:"quadro24.jpg",desc:"Quadro Jeep em detalhes de pirografia."},
+  {id:25,titulo:"Linha do comboio",img:"quadro25.jpg",desc:"Linha do comboio representada artisticamente."},
+  {id:26,titulo:"Locomotiva a vapor",img:"quadro26.jpg",desc:"Locomotiva a vapor em relevo de madeira."},
+  {id:27,titulo:"Mínion",img:"quadro27.jpg",desc:"Personagem Mínion em pirografia artesanal."},
+  {id:28,titulo:"Vela de Natal",img:"quadro28.jpg",desc:"Vela de Natal detalhada em madeira."},
+  {id:29,titulo:"Fazenda com animais",img:"quadro29.jpg",desc:"Cena de fazenda com animais, feita à mão."},
+  {id:30,titulo:"Montanha ao pôr do sol",img:"quadro30.jpg",desc:"Montanha ao pôr do sol em pirografia detalhada."}
 ];
 
-// Função para criar cards em cada categoria
-function carregarCards(){
-  const categorias = ["paisagens","veiculos","outros"];
-  categorias.forEach(cat=>{
-    const divTab = document.getElementById(cat);
-    quadros.filter(q=>q.categoria===cat).forEach(q=>{
-      const div = document.createElement('div');
-      div.className='card';
-      div.onclick=()=>openModal(q.id);
-      div.innerHTML=`<img src="${q.img}" alt="${q.titulo}"><h3>${q.titulo}</h3><p>${q.desc}</p>`;
-      divTab.appendChild(div);
-    });
-  });
-}
+// Gerar cards na aba Galeria
+const galeria = document.getElementById('galeria');
+quadros.forEach(q=>{
+  const div=document.createElement('div');
+  div.className='card';
+  div.onclick=()=>openModal(q.id);
+  div.innerHTML=`<img src="${q.img}" alt="${q.titulo}"><h3>${q.titulo}</h3><p>${q.desc}</p>`;
+  galeria.appendChild(div);
+});
 
 // Tabs
 function openTab(tabName){
@@ -146,8 +130,6 @@ function openModal(id){
 }
 function closeModal(){ document.getElementById('modal').style.display='none'; }
 window.onclick=function(e){if(e.target==document.getElementById('modal')) closeModal();}
-
-window.onload=carregarCards;
 </script>
 
 </body>

@@ -8,70 +8,115 @@
 </head>
 <body>
 
-  <!-- Cabeçalho / Menu -->
-  <header>
-    <div class="container">
-      <h1>Pirografia do Diogo</h1>
-      <nav>
-        <a href="#galeria">Quadros</a>
-        <a href="#encomendas">Encomendas</a>
-        <a href="#biografia">Biografia</a>
-      </nav>
-    </div>
-  </header>
+<!-- Cabeçalho / Menu -->
+<header>
+  <div class="container">
+    <h1>Pirografia do Diogo</h1>
+    <nav>
+      <a href="#galeria">Quadros</a>
+      <a href="#encomendas">Encomendas</a>
+      <a href="#biografia">Biografia</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- Capa -->
-  <section class="capa">
-    <div class="container">
-      <h2>Arte em Madeira D.F.</h2>
-      <p>Pirografia artesanal: cada peça é única!</p>
-    </div>
-  </section>
+<!-- Capa -->
+<section class="capa">
+  <div class="container">
+    <h2>Arte em Madeira D.F.</h2>
+    <p>Pirografia artesanal: cada peça é única!</p>
+  </div>
+</section>
 
-  <!-- Galeria -->
-  <section id="galeria">
-    <div class="container">
-      <h2>Galeria de Quadros</h2>
-      <div class="galeria">
-        <div class="item">
-          <a href="info_quadro1.html" target="_blank">
-            <img src="quadro1.jpg" alt="Pequena casa com carrinha">
-          </a>
-          <p>Pequena casa com carrinha</p>
-        </div>
-        <div class="item">
-          <a href="info_quadro2.html" target="_blank">
-            <img src="quadro2.jpg" alt="Uma Flor">
-          </a>
-          <p>Uma Flor</p>
-        </div>
-        <!-- Repete para todos os quadros -->
+<!-- Galeria -->
+<section id="galeria">
+  <div class="container">
+    <h2>Galeria de Quadros</h2>
+    <div class="galeria">
+      
+      <!-- Exemplo de item -->
+      <div class="item" onclick="openModal(1)">
+        <img src="quadro1.jpg" alt="Pequena casa com carrinha">
+        <p>Pequena casa com carrinha</p>
       </div>
-    </div>
-  </section>
+      <div class="item" onclick="openModal(2)">
+        <img src="quadro2.jpg" alt="Uma Flor">
+        <p>Uma Flor</p>
+      </div>
+      <div class="item" onclick="openModal(3)">
+        <img src="quadro3.jpg" alt="Criança com balão">
+        <p>Criança com balão</p>
+      </div>
+      <!-- Repete até o quadro28 -->
+      <!-- Para economizar espaço, coloca os 28 items com id correspondente -->
 
-  <!-- Encomendas -->
-  <section id="encomendas">
-    <div class="container">
-      <h2>Encomendas</h2>
-      <p>Para encomendas personalizadas, utilize o nosso <a href="https://forms.gle/seuformulario" target="_blank">formulário online</a>.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Biografia do Autor -->
-  <section id="biografia">
-    <div class="container">
-      <h2>Biografia do Autor</h2>
-      <p>Diogo é um artista português especializado em pirografia em madeira. Cada peça é feita com técnica, paciência e dedicação, refletindo a cultura e a beleza da arte artesanal.</p>
-    </div>
-  </section>
+<!-- Modal para informações -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modal-title"></h2>
+    <img id="modal-img" src="" alt="">
+    <p id="modal-desc"></p>
+  </div>
+</div>
 
-  <!-- Rodapé -->
-  <footer>
-    <div class="container">
-      <p>© 2025 Pirografia do Diogo</p>
-    </div>
-  </footer>
+<!-- Encomendas -->
+<section id="encomendas">
+  <div class="container">
+    <h2>Encomendas</h2>
+    <p>Para encomendas personalizadas, utilize o nosso <a href="https://forms.gle/seuformulario" target="_blank">formulário online</a>.</p>
+  </div>
+</section>
+
+<!-- Biografia do Autor -->
+<section id="biografia">
+  <div class="container">
+    <h2>Biografia do Autor</h2>
+    <p>Diogo é um artista português especializado em pirografia em madeira. Cada peça é feita com técnica, paciência e dedicação, refletindo a cultura e a beleza da arte artesanal.</p>
+  </div>
+</section>
+
+<!-- Rodapé -->
+<footer>
+  <div class="container">
+    <p>© 2025 Pirografia do Diogo</p>
+  </div>
+</footer>
+
+<!-- Script para modal -->
+<script>
+const quadros = [
+  {id:1, titulo:"Pequena casa com carrinha", img:"quadro1.jpg", desc:"Este quadro mostra uma pequena casa com uma carrinha, feito com pirografia em madeira. Cada detalhe é trabalhado manualmente."},
+  {id:2, titulo:"Uma Flor", img:"quadro2.jpg", desc:"Quadro representando uma flor delicada, pirografia artesanal."},
+  {id:3, titulo:"Criança com balão", img:"quadro3.jpg", desc:"Uma criança segurando um balão, detalhado em madeira."},
+  // Adicione aqui todos os quadros até 28
+];
+
+function openModal(id) {
+  const quadro = quadros.find(q => q.id === id);
+  document.getElementById('modal-title').innerText = quadro.titulo;
+  document.getElementById('modal-img').src = quadro.img;
+  document.getElementById('modal-img').alt = quadro.titulo;
+  document.getElementById('modal-desc').innerText = quadro.desc;
+  document.getElementById('modal').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+// Fechar ao clicar fora do modal
+window.onclick = function(event) {
+  const modal = document.getElementById('modal');
+  if(event.target === modal) {
+    modal.style.display = 'none';
+  }
+}
+</script>
 
 </body>
 </html>

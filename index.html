@@ -1,82 +1,135 @@
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#111;color:#fff}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pirografia do Diogo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-.screen{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
+<!-- CAPA -->
+<section id="intro" class="screen">
+  <div class="box">
+    <h1>Pirografia do Diogo</h1>
+    <p>Arte em madeira feita à mão</p>
+    <button id="btnExplorar">Explorar</button>
+  </div>
+</section>
 
-.hidden{display:none}
+<!-- MENU -->
+<section id="menu" class="screen hidden">
+  <div class="box">
+    <h2>Escolhe uma opção</h2>
+    <button class="menu-btn" data-target="galeria">Galeria de Quadros</button>
+    <button class="menu-btn" data-target="encomendas">Encomendas</button>
+    <button class="menu-btn" data-target="biografia">Biografia do Autor</button>
+  </div>
+</section>
 
-#intro{
-  background:url('quadro1.jpg') center/cover no-repeat;
-}
+<!-- CONTEÚDO -->
+<section id="conteudo" class="screen hidden">
+  <div class="content">
 
-.box button,
-.menu-btn{
-  margin:15px;
-  padding:15px 40px;
-  font-size:1.1rem;
-  cursor:pointer;
-}
+    <!-- GALERIA -->
+    <div id="galeria" class="section hidden">
+      <button class="back">← Voltar ao menu</button>
+    </div>
 
-.content{
-  width:90%;
-  max-width:1200px;
-  height:90vh;
-  overflow-y:auto;
-}
+    <!-- ENCOMENDAS -->
+    <div id="encomendas" class="section hidden">
+      <button class="back">← Voltar ao menu</button>
+      <h2>Encomendas</h2>
+      <p>Para encomendas personalizadas preenche o formulário:</p>
+      <a href="#" target="_blank">Questionário de Encomenda</a>
+    </div>
 
-.section h2{margin-bottom:20px}
+    <!-- BIOGRAFIA -->
+    <div id="biografia" class="section hidden">
+      <button class="back">← Voltar ao menu</button>
+      <h2>Biografia do Autor</h2>
+      <p>
+        Diogo é um artista português especializado em pirografia.
+        Cada obra é feita manualmente com dedicação e detalhe,
+        transformando madeira em arte.
+      </p>
+    </div>
 
-.back{
-  margin-bottom:20px;
-  padding:10px 20px;
-  cursor:pointer;
-}
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <span id="close">×</span>
+    <h3 id="modal-title"></h3>
+    <img id="modal-img">
+    <p id="modal-desc"></p>
+  </div>
+</div>
+
+<script>
+/* QUADROS */
+const quadros = Array.from({length:30},(_,i)=>({
+  titulo:`Quadro ${i+1}`,
+  img:`quadro${i+1}.jpg`,
+  desc:`Descrição do quadro ${i+1}`
+}));
+
+/* ELEMENTOS */
+const intro=document.getElementById('intro');
+const menu=document.getElementById('menu');
+const conteudo=document.getElementById('conteudo');
+const galeria=document.getElementById('galeria');
+const modal=document.getElementById('modal');
+
+/* EXPLORAR */
+btnExplorar.onclick=()=>{
+  intro.classList.add('hidden');
+  menu.classList.remove('hidden');
+};
+
+/* MENU */
+document.querySelectorAll('.menu-btn').forEach(b=>{
+  b.onclick=()=>{
+    menu.classList.add('hidden');
+    conteudo.classList.remove('hidden');
+    document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
+    document.getElementById(b.dataset.target).classList.remove('hidden');
+    if(b.dataset.target==='galeria') carregarGaleria();
+  }
+});
+
+/* VOLTAR */
+document.querySelectorAll('.back').forEach(b=>{
+  b.onclick=()=>{
+    conteudo.classList.add('hidden');
+    menu.classList.remove('hidden');
+  }
+});
 
 /* GALERIA */
-#galeria{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+function carregarGaleria(){
+  if(galeria.querySelector('.card')) return;
+  quadros.forEach(q=>{
+    const d=document.createElement('div');
+    d.className='card';
+    d.innerHTML=`<img src="${q.img}"><h4>${q.titulo}</h4>`;
+    d.onclick=()=>abrirModal(q);
+    galeria.appendChild(d);
+  });
 }
-
-.card{
-  background:#222;
-  padding:10px;
-  cursor:pointer;
-}
-
-.card img{width:100%}
 
 /* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.8);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+function abrirModal(q){
+  modal.classList.remove('hidden');
+  document.getElementById('modal-title').innerText=q.titulo;
+  document.getElementById('modal-img').src=q.img;
+  document.getElementById('modal-desc').innerText=q.desc;
 }
+close.onclick=()=>modal.classList.add('hidden');
+modal.onclick=e=>{if(e.target===modal)modal.classList.add('hidden');}
+</script>
 
-.modal-box{
-  background:#222;
-  padding:20px;
-  max-width:600px;
-  width:90%;
-}
-
-.modal-box img{
-  width:100%;
-  margin:15px 0;
-}
-
-#close{
-  cursor:pointer;
-  font-size:1.5rem;
-  float:right;
-}
+</body>
+</html>

@@ -32,8 +32,11 @@
   <div class="content-wrapper">
 
     <!-- GALERIA -->
-    <div id="galeria" class="content-section hidden"></div>
-
+    <div id="galeria" class="content-section hidden">
+      <div id="galeria" class="content-section hidden">
+  <button class="back-btn">← Voltar ao menu</button>
+    </div>
+      
     <!-- ENCOMENDAS -->
     <div id="encomendas" class="content-section hidden">
       <h2>Encomendas</h2>
@@ -41,6 +44,12 @@
         Para encomendas personalizadas, preenche o nosso
         <a href="https://forms.gle/seuformulario" target="_blank">questionário online</a>.
       </p>
+      <div id="encomendas" class="content-section hidden">
+  <button class="back-btn">← Voltar ao menu</button>
+  <h2>Encomendas</h2>
+  ...
+</div>
+
     </div>
 
     <!-- BIOGRAFIA -->
@@ -50,6 +59,12 @@
         Diogo é um artista português especializado em pirografia em madeira.
         Cada obra é criada manualmente, com atenção ao detalhe e paixão pela arte.
       </p>
+      <div id="biografia" class="content-section hidden">
+  <button class="back-btn">← Voltar ao menu</button>
+  <h2>Biografia do Autor</h2>
+  ...
+</div>
+
     </div>
 
   </div>
@@ -121,6 +136,15 @@ function abrirModal(q){
 }
 close.onclick=()=>modal.style.display='none';
 window.onclick=e=>{if(e.target===modal)modal.style.display='none';}
+</script>
+  <script>
+document.querySelectorAll('.back-btn').forEach(btn=>{
+  btn.onclick = () => {
+    document.getElementById('content-screen').classList.add('hidden');
+    document.getElementById('menu-screen').classList.remove('hidden');
+    document.querySelectorAll('.content-section').forEach(s=>s.classList.add('hidden'));
+  };
+});
 </script>
 
 </body>

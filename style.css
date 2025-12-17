@@ -1,82 +1,82 @@
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#111;color:#fff}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #111; color: #fff; }
 
-.screen{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+.screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.hidden{display:none}
+.hidden { display: none; }
 
-#intro{
-  background:url('quadro1.jpg') center/cover no-repeat;
+#intro {
+  background: url('quadro1.jpg') center/cover no-repeat;
 }
 
 .box button,
-.menu-btn{
-  margin:15px;
-  padding:15px 40px;
-  font-size:1.1rem;
-  cursor:pointer;
+.menu-btn {
+  margin: 15px;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
-.content{
-  width:90%;
-  max-width:1200px;
-  height:90vh;
-  overflow-y:auto;
+.content {
+  width: 90%;
+  max-width: 1200px;
+  height: 90vh;
+  overflow-y: auto;
 }
 
-.section h2{margin-bottom:20px}
+.section h2 { margin-bottom: 20px; }
 
-.back{
-  margin-bottom:20px;
-  padding:10px 20px;
-  cursor:pointer;
+.back-btn {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 /* GALERIA */
-#galeria{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+#galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
-.card{
-  background:#222;
-  padding:10px;
-  cursor:pointer;
+.card {
+  background: #222;
+  padding: 10px;
+  cursor: pointer;
 }
 
-.card img{width:100%}
+.card img { width: 100%; }
 
 /* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.8);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.modal-box{
-  background:#222;
-  padding:20px;
-  max-width:600px;
-  width:90%;
+.modal-box {
+  background: #222;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
 }
 
-.modal-box img{
-  width:100%;
-  margin:15px 0;
+.modal-box img {
+  width: 100%;
+  margin: 15px 0;
 }
 
-#close{
-  cursor:pointer;
-  font-size:1.5rem;
-  float:right;
+#close {
+  cursor: pointer;
+  font-size: 1.5rem;
+  float: right;
 }

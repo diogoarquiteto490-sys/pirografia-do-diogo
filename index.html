@@ -33,25 +33,23 @@
 
     <!-- GALERIA -->
     <div id="galeria" class="section hidden">
-      <button class="back">← Voltar ao menu</button>
+      <button class="back-btn">← Voltar ao menu</button>
     </div>
 
     <!-- ENCOMENDAS -->
     <div id="encomendas" class="section hidden">
-      <button class="back">← Voltar ao menu</button>
+      <button class="back-btn">← Voltar ao menu</button>
       <h2>Encomendas</h2>
-      <p>Para encomendas personalizadas preenche o formulário:</p>
-      <a href="#" target="_blank">Questionário de Encomenda</a>
+      <p>Para encomendas personalizadas preenche o formulário.</p>
     </div>
 
     <!-- BIOGRAFIA -->
     <div id="biografia" class="section hidden">
-      <button class="back">← Voltar ao menu</button>
+      <button class="back-btn">← Voltar ao menu</button>
       <h2>Biografia do Autor</h2>
       <p>
-        Diogo é um artista português especializado em pirografia.
-        Cada obra é feita manualmente com dedicação e detalhe,
-        transformando madeira em arte.
+        Diogo é um artista português especializado em pirografia em madeira.
+        Cada obra é feita manualmente com dedicação e detalhe.
       </p>
     </div>
 
@@ -69,66 +67,74 @@
 </div>
 
 <script>
+/* ELEMENTOS */
+const intro = document.getElementById('intro');
+const menu = document.getElementById('menu');
+const conteudo = document.getElementById('conteudo');
+const galeria = document.getElementById('galeria');
+const modal = document.getElementById('modal');
+const btnExplorar = document.getElementById('btnExplorar');
+const closeBtn = document.getElementById('close');
+
 /* QUADROS */
-const quadros = Array.from({length:30},(_,i)=>({
-  titulo:`Quadro ${i+1}`,
-  img:`quadro${i+1}.jpg`,
-  desc:`Descrição do quadro ${i+1}`
+const quadros = Array.from({ length: 30 }, (_, i) => ({
+  titulo: `Quadro ${i + 1}`,
+  img: `quadro${i + 1}.jpg`,
+  desc: `Descrição do quadro ${i + 1}`
 }));
 
-/* ELEMENTOS */
-const intro=document.getElementById('intro');
-const menu=document.getElementById('menu');
-const conteudo=document.getElementById('conteudo');
-const galeria=document.getElementById('galeria');
-const modal=document.getElementById('modal');
-
 /* EXPLORAR */
-btnExplorar.onclick=()=>{
+btnExplorar.addEventListener('click', () => {
   intro.classList.add('hidden');
   menu.classList.remove('hidden');
-};
-
-/* MENU */
-document.querySelectorAll('.menu-btn').forEach(b=>{
-  b.onclick=()=>{
-    menu.classList.add('hidden');
-    conteudo.classList.remove('hidden');
-    document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
-    document.getElementById(b.dataset.target).classList.remove('hidden');
-    if(b.dataset.target==='galeria') carregarGaleria();
-  }
 });
 
-/* VOLTAR */
-document.querySelectorAll('.back').forEach(b=>{
-  b.onclick=()=>{
+/* MENU */
+document.querySelectorAll('.menu-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    menu.classList.add('hidden');
+    conteudo.classList.remove('hidden');
+
+    document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+    document.getElementById(btn.dataset.target).classList.remove('hidden');
+
+    if (btn.dataset.target === 'galeria') carregarGaleria();
+  });
+});
+
+/* VOLTAR AO MENU */
+document.querySelectorAll('.back-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
     conteudo.classList.add('hidden');
     menu.classList.remove('hidden');
-  }
+  });
 });
 
 /* GALERIA */
-function carregarGaleria(){
-  if(galeria.querySelector('.card')) return;
-  quadros.forEach(q=>{
-    const d=document.createElement('div');
-    d.className='card';
-    d.innerHTML=`<img src="${q.img}"><h4>${q.titulo}</h4>`;
-    d.onclick=()=>abrirModal(q);
-    galeria.appendChild(d);
+function carregarGaleria() {
+  if (galeria.querySelector('.card')) return;
+
+  quadros.forEach(q => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<img src="${q.img}" alt="${q.titulo}"><h4>${q.titulo}</h4>`;
+    card.onclick = () => abrirModal(q);
+    galeria.appendChild(card);
   });
 }
 
 /* MODAL */
-function abrirModal(q){
+function abrirModal(q) {
   modal.classList.remove('hidden');
-  document.getElementById('modal-title').innerText=q.titulo;
-  document.getElementById('modal-img').src=q.img;
-  document.getElementById('modal-desc').innerText=q.desc;
+  document.getElementById('modal-title').innerText = q.titulo;
+  document.getElementById('modal-img').src = q.img;
+  document.getElementById('modal-desc').innerText = q.desc;
 }
-close.onclick=()=>modal.classList.add('hidden');
-modal.onclick=e=>{if(e.target===modal)modal.classList.add('hidden');}
+
+closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+modal.addEventListener('click', e => {
+  if (e.target === modal) modal.classList.add('hidden');
+});
 </script>
 
 </body>

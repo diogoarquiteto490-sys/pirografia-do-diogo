@@ -5,7 +5,7 @@
   <title>Pirografia do Diogo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS (CAMINHO CORRETO PARA GITHUB PAGES) -->
+  <!-- CSS correto para GitHub Pages -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,27 +33,33 @@
 <section id="conteudo" class="screen hidden">
   <div class="content">
 
+    <!-- GALERIA -->
     <div id="galeria" class="section hidden">
       <button class="back-btn">← Voltar ao menu</button>
     </div>
 
+    <!-- ENCOMENDAS -->
     <div id="encomendas" class="section hidden">
       <button class="back-btn">← Voltar ao menu</button>
       <h2>Encomendas</h2>
       <p>Para encomendas personalizadas entra em contacto.</p>
     </div>
 
+    <!-- BIOGRAFIA -->
     <div id="biografia" class="section hidden">
       <button class="back-btn">← Voltar ao menu</button>
       <h2>Biografia do Autor</h2>
-      <p>Diogo é um artista português especializado em pirografia em madeira.</p>
+      <p>
+        Diogo é um artista português especializado em pirografia em madeira.
+        Cada obra é feita manualmente com dedicação e detalhe.
+      </p>
     </div>
 
   </div>
 </section>
 
 <!-- MODAL -->
-<div id="modal" class="modal hidden">
+<div id="modal" class="modal">
   <div class="modal-box">
     <span id="close">×</span>
     <h3 id="modal-title"></h3>
@@ -121,14 +127,14 @@ function carregarGaleria() {
 
 /* MODAL */
 function abrirModal(q) {
-  modal.classList.remove("hidden");
+  modal.style.display = "flex";
   document.getElementById("modal-title").innerText = q.titulo;
   document.getElementById("modal-img").src = q.img;
   document.getElementById("modal-desc").innerText = q.desc;
 }
 
-closeBtn.onclick = () => modal.classList.add("hidden");
-modal.onclick = e => { if (e.target === modal) modal.classList.add("hidden"); };
+closeBtn.onclick = () => modal.style.display = "none";
+modal.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
 </script>
 
 </body>

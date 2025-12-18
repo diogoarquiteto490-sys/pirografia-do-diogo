@@ -1,141 +1,64 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
   <title>Pirografia do Diogo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS correto para GitHub Pages -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- CAPA -->
-<section id="intro" class="screen">
-  <div class="box">
+<section id="capa">
+  <div class="capa-conteudo">
     <h1>Pirografia do Diogo</h1>
     <p>Arte em madeira feita à mão</p>
-    <button id="btnExplorar">Explorar</button>
+    <a href="#menu" class="btn">Entrar</a>
   </div>
 </section>
 
 <!-- MENU -->
-<section id="menu" class="screen hidden">
-  <div class="box">
-    <h2>Escolhe uma opção</h2>
-    <button class="menu-btn" data-target="galeria">Galeria de Quadros</button>
-    <button class="menu-btn" data-target="encomendas">Encomendas</button>
-    <button class="menu-btn" data-target="biografia">Biografia do Autor</button>
-  </div>
+<section id="menu">
+  <h2>Menu</h2>
+  <nav>
+    <a href="#galeria">Galeria de Quadros</a>
+    <a href="#encomendas">Encomendas</a>
+    <a href="#biografia">Biografia do Autor</a>
+  </nav>
 </section>
 
-<!-- CONTEÚDO -->
-<section id="conteudo" class="screen hidden">
-  <div class="content">
-
-    <!-- GALERIA -->
-    <div id="galeria" class="section hidden">
-      <button class="back-btn">← Voltar ao menu</button>
-    </div>
-
-    <!-- ENCOMENDAS -->
-    <div id="encomendas" class="section hidden">
-      <button class="back-btn">← Voltar ao menu</button>
-      <h2>Encomendas</h2>
-      <p>Para encomendas personalizadas entra em contacto.</p>
-    </div>
-
-    <!-- BIOGRAFIA -->
-    <div id="biografia" class="section hidden">
-      <button class="back-btn">← Voltar ao menu</button>
-      <h2>Biografia do Autor</h2>
-      <p>
-        Diogo é um artista português especializado em pirografia em madeira.
-        Cada obra é feita manualmente com dedicação e detalhe.
-      </p>
-    </div>
-
+<!-- GALERIA -->
+<section id="galeria">
+  <h2>Galeria de Quadros</h2>
+  <div class="galeria">
+    <img src="quadro1.jpg" alt="Quadro 1">
+    <img src="quadro2.jpg" alt="Quadro 2">
+    <img src="quadro3.jpg" alt="Quadro 3">
+    <img src="quadro4.jpg" alt="Quadro 4">
+    <img src="quadro5.jpg" alt="Quadro 5">
   </div>
+  <a href="#menu" class="voltar">Voltar ao menu</a>
 </section>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-  <div class="modal-box">
-    <span id="close">×</span>
-    <h3 id="modal-title"></h3>
-    <img id="modal-img">
-    <p id="modal-desc"></p>
-  </div>
-</div>
+<!-- ENCOMENDAS -->
+<section id="encomendas">
+  <h2>Encomendas</h2>
+  <p>
+    Faz encomendas personalizadas de pirografia em madeira.
+    Para mais informações entra em contacto.
+  </p>
+  <a href="#menu" class="voltar">Voltar ao menu</a>
+</section>
 
-<script>
-/* ELEMENTOS */
-const intro = document.getElementById("intro");
-const menu = document.getElementById("menu");
-const conteudo = document.getElementById("conteudo");
-const galeria = document.getElementById("galeria");
-const modal = document.getElementById("modal");
-const btnExplorar = document.getElementById("btnExplorar");
-const closeBtn = document.getElementById("close");
-
-/* QUADROS */
-const quadros = Array.from({ length: 30 }, (_, i) => ({
-  titulo: "Quadro " + (i + 1),
-  img: "quadro" + (i + 1) + ".jpg",
-  desc: "Descrição do quadro " + (i + 1)
-}));
-
-/* EXPLORAR */
-btnExplorar.onclick = () => {
-  intro.classList.add("hidden");
-  menu.classList.remove("hidden");
-};
-
-/* MENU */
-document.querySelectorAll(".menu-btn").forEach(btn => {
-  btn.onclick = () => {
-    menu.classList.add("hidden");
-    conteudo.classList.remove("hidden");
-
-    document.querySelectorAll(".section").forEach(s => s.classList.add("hidden"));
-    document.getElementById(btn.dataset.target).classList.remove("hidden");
-
-    if (btn.dataset.target === "galeria") carregarGaleria();
-  };
-});
-
-/* VOLTAR */
-document.querySelectorAll(".back-btn").forEach(btn => {
-  btn.onclick = () => {
-    conteudo.classList.add("hidden");
-    menu.classList.remove("hidden");
-  };
-});
-
-/* GALERIA */
-function carregarGaleria() {
-  if (galeria.querySelector(".card")) return;
-
-  quadros.forEach(q => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `<img src="${q.img}" alt="${q.titulo}"><h4>${q.titulo}</h4>`;
-    card.onclick = () => abrirModal(q);
-    galeria.appendChild(card);
-  });
-}
-
-/* MODAL */
-function abrirModal(q) {
-  modal.style.display = "flex";
-  document.getElementById("modal-title").innerText = q.titulo;
-  document.getElementById("modal-img").src = q.img;
-  document.getElementById("modal-desc").innerText = q.desc;
-}
-
-closeBtn.onclick = () => modal.style.display = "none";
-modal.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
-</script>
+<!-- BIOGRAFIA -->
+<section id="biografia">
+  <h2>Biografia do Autor</h2>
+  <p>
+    Diogo é um artista português dedicado à pirografia.
+    Cada peça é feita manualmente com detalhe e paixão.
+  </p>
+  <a href="#menu" class="voltar">Voltar ao menu</a>
+</section>
 
 </body>
 </html>

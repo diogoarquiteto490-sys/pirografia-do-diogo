@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
@@ -13,52 +13,90 @@
   <div class="capa-conteudo">
     <h1>Pirografia do Diogo</h1>
     <p>Arte em madeira feita à mão</p>
-    <a href="#menu" class="btn">Entrar</a>
+    <button id="entrar">Entrar</button>
   </div>
 </section>
 
-<!-- MENU -->
-<section id="menu">
-  <h2>Menu</h2>
-  <nav>
-    <a href="#galeria">Galeria de Quadros</a>
-    <a href="#encomendas">Encomendas</a>
-    <a href="#biografia">Biografia do Autor</a>
+<!-- SITE -->
+<section id="site" class="hidden">
+
+  <!-- MENU DE ESCOLHA -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="galeria">Galeria</button>
+    <button class="tab" data-tab="encomendas">Encomendas</button>
+    <button class="tab" data-tab="biografia">Biografia</button>
   </nav>
-</section>
 
-<!-- GALERIA -->
-<section id="galeria">
-  <h2>Galeria de Quadros</h2>
-  <div class="galeria">
-    <img src="quadro1.jpg" alt="Quadro 1">
-    <img src="quadro2.jpg" alt="Quadro 2">
-    <img src="quadro3.jpg" alt="Quadro 3">
-    <img src="quadro4.jpg" alt="Quadro 4">
-    <img src="quadro5.jpg" alt="Quadro 5">
+  <!-- GALERIA -->
+  <div id="galeria" class="tab-content active">
+    <button class="voltar-menu">← Voltar ao menu</button>
+    <h2>Galeria de Quadros</h2>
+
+    <div class="galeria">
+      <img src="quadro1.jpg" alt="Quadro 1">
+      <img src="quadro2.jpg" alt="Quadro 2">
+      <img src="quadro3.jpg" alt="Quadro 3">
+      <img src="quadro4.jpg" alt="Quadro 4">
+      <img src="quadro5.jpg" alt="Quadro 5">
+    </div>
   </div>
-  <a href="#menu" class="voltar">Voltar ao menu</a>
+
+  <!-- ENCOMENDAS -->
+  <div id="encomendas" class="tab-content">
+    <button class="voltar-menu">← Voltar ao menu</button>
+    <h2>Encomendas</h2>
+    <p>
+      Faz encomendas personalizadas de pirografia em madeira.
+      Entra em contacto para mais informações.
+    </p>
+  </div>
+
+  <!-- BIOGRAFIA -->
+  <div id="biografia" class="tab-content">
+    <button class="voltar-menu">← Voltar ao menu</button>
+    <h2>Biografia do Autor</h2>
+    <p>
+      Diogo é um artista português dedicado à pirografia em madeira.
+      Cada peça é feita manualmente com cuidado e paixão.
+    </p>
+  </div>
+
 </section>
 
-<!-- ENCOMENDAS -->
-<section id="encomendas">
-  <h2>Encomendas</h2>
-  <p>
-    Faz encomendas personalizadas de pirografia em madeira.
-    Para mais informações entra em contacto.
-  </p>
-  <a href="#menu" class="voltar">Voltar ao menu</a>
-</section>
+<script>
+/* ENTRAR */
+document.getElementById("entrar").onclick = () => {
+  document.getElementById("capa").style.display = "none";
+  document.getElementById("site").classList.remove("hidden");
+};
 
-<!-- BIOGRAFIA -->
-<section id="biografia">
-  <h2>Biografia do Autor</h2>
-  <p>
-    Diogo é um artista português dedicado à pirografia.
-    Cada peça é feita manualmente com detalhe e paixão.
-  </p>
-  <a href="#menu" class="voltar">Voltar ao menu</a>
-</section>
+/* SEPARADORES */
+const tabs = document.querySelectorAll(".tab");
+const contents = document.querySelectorAll(".tab-content");
+
+tabs.forEach(tab => {
+  tab.onclick = () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.add("active");
+  };
+});
+
+/* VOLTAR AO MENU */
+document.querySelectorAll(".voltar-menu").forEach(btn => {
+  btn.onclick = () => {
+    contents.forEach(c => c.classList.remove("active"));
+    tabs.forEach(t => t.classList.remove("active"));
+
+    // menu inicial (Galeria)
+    document.getElementById("galeria").classList.add("active");
+    document.querySelector('[data-tab="galeria"]').classList.add("active");
+  };
+});
+</script>
 
 </body>
-</html>
+  </html>
+  

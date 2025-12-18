@@ -31,15 +31,7 @@
   <div id="galeria" class="tab-content">
     <button class="voltar-menu">← Voltar ao menu</button>
     <h2>Galeria de Quadros</h2>
-
     <div class="galeria" id="listaQuadros"></div>
-
-    <!-- INFO DO QUADRO -->
-    <div id="infoQuadro" class="info hidden">
-      <h3 id="infoTitulo"></h3>
-      <img id="infoImg">
-      <p id="infoDesc"></p>
-    </div>
   </div>
 
   <!-- ENCOMENDAS -->
@@ -58,6 +50,16 @@
 
 </section>
 
+<!-- MODAL -->
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <span class="close">✕</span>
+    <h3 id="modalTitulo"></h3>
+    <img id="modalImg">
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
 <script>
 /* ENTRAR */
 document.getElementById("entrar").onclick = () => {
@@ -73,7 +75,6 @@ tabs.forEach(tab => {
   tab.onclick = () => {
     tabs.forEach(t => t.classList.remove("active"));
     contents.forEach(c => c.classList.remove("active"));
-    document.getElementById("infoQuadro").classList.add("hidden");
 
     tab.classList.add("active");
     document.getElementById(tab.dataset.tab).classList.add("active");
@@ -85,7 +86,6 @@ document.querySelectorAll(".voltar-menu").forEach(btn => {
   btn.onclick = () => {
     contents.forEach(c => c.classList.remove("active"));
     tabs.forEach(t => t.classList.remove("active"));
-    document.getElementById("infoQuadro").classList.add("hidden");
   };
 });
 
@@ -102,20 +102,28 @@ quadros.forEach(q => {
   const img = document.createElement("img");
   img.src = q.imagem;
   img.alt = q.titulo;
-  img.onclick = () => mostrarInfo(q);
+  img.onclick = () => abrirModal(q);
   lista.appendChild(img);
 });
 
-function mostrarInfo(q) {
-  document.getElementById("infoTitulo").innerText = q.titulo;
-  document.getElementById("infoImg").src = q.imagem;
-  document.getElementById("infoDesc").innerText = q.descricao;
-  document.getElementById("infoQuadro").classList.remove("hidden");
+/* MODAL */
+const modal = document.getElementById("modal");
+
+function abrirModal(q) {
+  document.getElementById("modalTitulo").innerText = q.titulo;
+  document.getElementById("modalImg").src = q.imagem;
+  document.getElementById("modalDesc").innerText = q.descricao;
+  modal.classList.remove("hidden");
 }
+
+document.querySelector(".close").onclick = () => {
+  modal.classList.add("hidden");
+};
+
+modal.onclick = e => {
+  if (e.target === modal) modal.classList.add("hidden");
+};
 </script>
 
 </body>
 </html>
-
-
-  

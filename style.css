@@ -13,7 +13,7 @@ body {
 /* CAPA */
 #capa {
   height: 100vh;
-  background: url("quadro1.jpg") center / cover no-repeat;
+  background: url("Capa.jpg") center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,15 +91,37 @@ body {
   border: 2px solid #333;
 }
 
-/* INFO DO QUADRO */
-.info {
-  margin-top: 40px;
-  padding: 20px;
-  background: #222;
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
 }
 
-.info img {
-  max-width: 400px;
+.modal-box {
+  background: #222;
+  padding: 25px;
+  max-width: 800px;       /* 👈 maior */
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.modal-box img {
   width: 100%;
+  max-height: 70vh;       /* 👈 imagem grande */
+  object-fit: contain;
   margin: 20px 0;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 1.5rem;
 }

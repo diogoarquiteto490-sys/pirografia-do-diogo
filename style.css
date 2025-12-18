@@ -1,5 +1,14 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; background: #111; color: #fff; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+}
 
 .screen {
   height: 100vh;
@@ -9,10 +18,12 @@ body { font-family: Arial, sans-serif; background: #111; color: #fff; }
   text-align: center;
 }
 
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
 #intro {
-  background: url('quadro1.jpg') center/cover no-repeat;
+  background: url("quadro1.jpg") center / cover no-repeat;
 }
 
 .box button,
@@ -30,7 +41,9 @@ body { font-family: Arial, sans-serif; background: #111; color: #fff; }
   overflow-y: auto;
 }
 
-.section h2 { margin-bottom: 20px; }
+.section h2 {
+  margin-bottom: 20px;
+}
 
 .back-btn {
   margin-bottom: 20px;
@@ -51,13 +64,15 @@ body { font-family: Arial, sans-serif; background: #111; color: #fff; }
   cursor: pointer;
 }
 
-.card img { width: 100%; }
+.card img {
+  width: 100%;
+}
 
 /* MODAL */
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,4 +94,5 @@ body { font-family: Arial, sans-serif; background: #111; color: #fff; }
   cursor: pointer;
   font-size: 1.5rem;
   float: right;
-}
+  }
+  

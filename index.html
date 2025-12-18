@@ -20,7 +20,7 @@
 <!-- SITE -->
 <section id="site" class="hidden">
 
-  <!-- MENU DE ESCOLHA -->
+  <!-- MENU -->
   <nav class="tabs">
     <button class="tab" data-tab="galeria">Galeria</button>
     <button class="tab" data-tab="encomendas">Encomendas</button>
@@ -31,12 +31,14 @@
   <div id="galeria" class="tab-content">
     <button class="voltar-menu">← Voltar ao menu</button>
     <h2>Galeria de Quadros</h2>
-    <div class="galeria">
-      <img src="quadro1.jpg">
-      <img src="quadro2.jpg">
-      <img src="quadro3.jpg">
-      <img src="quadro4.jpg">
-      <img src="quadro5.jpg">
+
+    <div class="galeria" id="listaQuadros"></div>
+
+    <!-- INFO DO QUADRO -->
+    <div id="infoQuadro" class="info hidden">
+      <h3 id="infoTitulo"></h3>
+      <img id="infoImg">
+      <p id="infoDesc"></p>
     </div>
   </div>
 
@@ -51,9 +53,7 @@
   <div id="biografia" class="tab-content">
     <button class="voltar-menu">← Voltar ao menu</button>
     <h2>Biografia do Autor</h2>
-    <p>
-      Diogo é um artista português dedicado à pirografia em madeira.
-    </p>
+    <p>Diogo é um artista português dedicado à pirografia em madeira.</p>
   </div>
 
 </section>
@@ -71,27 +71,51 @@ const contents = document.querySelectorAll(".tab-content");
 
 tabs.forEach(tab => {
   tab.onclick = () => {
-    // limpar tudo
     tabs.forEach(t => t.classList.remove("active"));
     contents.forEach(c => c.classList.remove("active"));
+    document.getElementById("infoQuadro").classList.add("hidden");
 
-    // ativar escolhido
     tab.classList.add("active");
     document.getElementById(tab.dataset.tab).classList.add("active");
   };
 });
 
-/* VOLTAR AO MENU DE ESCOLHA */
+/* VOLTAR AO MENU */
 document.querySelectorAll(".voltar-menu").forEach(btn => {
   btn.onclick = () => {
     contents.forEach(c => c.classList.remove("active"));
     tabs.forEach(t => t.classList.remove("active"));
-    // fica apenas o menu visível
+    document.getElementById("infoQuadro").classList.add("hidden");
   };
 });
+
+/* QUADROS */
+const quadros = Array.from({ length: 30 }, (_, i) => ({
+  titulo: `Quadro ${i + 1}`,
+  imagem: `quadro${i + 1}.jpg`,
+  descricao: `Descrição detalhada do quadro ${i + 1}.`
+}));
+
+const lista = document.getElementById("listaQuadros");
+
+quadros.forEach(q => {
+  const img = document.createElement("img");
+  img.src = q.imagem;
+  img.alt = q.titulo;
+  img.onclick = () => mostrarInfo(q);
+  lista.appendChild(img);
+});
+
+function mostrarInfo(q) {
+  document.getElementById("infoTitulo").innerText = q.titulo;
+  document.getElementById("infoImg").src = q.imagem;
+  document.getElementById("infoDesc").innerText = q.descricao;
+  document.getElementById("infoQuadro").classList.remove("hidden");
+}
 </script>
 
 </body>
 </html>
+
 
   

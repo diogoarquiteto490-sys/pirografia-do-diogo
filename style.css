@@ -10,6 +10,7 @@ body {
   color: #fff;
 }
 
+/* TELAS */
 .screen {
   height: 100vh;
   display: flex;
@@ -22,10 +23,12 @@ body {
   display: none;
 }
 
+/* CAPA */
 #intro {
   background: url("quadro1.jpg") center / cover no-repeat;
 }
 
+/* BOTÕES */
 .box button,
 .menu-btn {
   margin: 15px;
@@ -34,6 +37,13 @@ body {
   cursor: pointer;
 }
 
+.back-btn {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* CONTEÚDO */
 .content {
   width: 90%;
   max-width: 1200px;
@@ -43,12 +53,6 @@ body {
 
 .section h2 {
   margin-bottom: 20px;
-}
-
-.back-btn {
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
 }
 
 /* GALERIA */
@@ -68,12 +72,12 @@ body {
   width: 100%;
 }
 
-/* MODAL */
+/* MODAL (CORRIGIDO) */
 .modal {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.8);
-  display: flex;
+  display: none;               /* 👈 MUITO IMPORTANTE */
   align-items: center;
   justify-content: center;
 }
@@ -94,5 +98,4 @@ body {
   cursor: pointer;
   font-size: 1.5rem;
   float: right;
-  }
-  
+}

@@ -65,3 +65,13 @@ document.querySelector(".close").onclick = () => {
 modal.onclick = e => {
   if (e.target === modal) modal.classList.add("hidden");
 };
+
+/* VOLTAR PARA A CAPA */
+document.getElementById("voltarCapa").onclick = () => {
+  document.getElementById("site").classList.add("hidden");
+  document.getElementById("capa").style.display = "flex";
+  
+  // Limpar separadores e conteúdo ativo
+  contents.forEach(c => c.classList.remove("active"));
+  tabs.forEach(t => t.classList.remove("active"));
+};

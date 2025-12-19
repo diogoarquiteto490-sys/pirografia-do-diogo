@@ -92,11 +92,36 @@ document.querySelectorAll(".voltar-menu").forEach(btn => {
 });
 
 /* QUADROS */
-const quadros = Array.from({ length: 30 }, (_, i) => ({
-  titulo: `Quadro ${i + 1}`,
-  imagem: `quadro${i + 1}.jpg`,
-  descricao: `Descrição detalhada do quadro ${i + 1}.`
-}));
+const quadros = [
+  {
+    titulo: "Quadro 1 – Árvore da Vida",
+    imagem: "quadro1.jpg",
+    descricao: "Pirografia artesanal em madeira representando a Árvore da Vida."
+  },
+  {
+    titulo: "Quadro 2 – Lobo",
+    imagem: "quadro2.jpg",
+    descricao: "Lobo em pirografia, símbolo de força, liberdade e proteção."
+  },
+  {
+    titulo: "Quadro 3 – Águia",
+    imagem: "quadro3.jpg",
+    descricao: "Águia em voo pirogravada, representando visão e poder."
+  },
+  {
+    titulo: "Quadro 4 – Mandala",
+    imagem: "quadro4.jpg",
+    descricao: "Mandala geométrica feita à mão em madeira."
+  },
+  {
+    titulo: "Quadro 5 – Cavalo",
+    imagem: "quadro5.jpg",
+    descricao: "Cavalo em pirografia, símbolo de liberdade e energia."
+  }
+
+  /* 👉 continua até ao quadro 30 */
+];
+
 
 const lista = document.getElementById("listaQuadros");
 const modal = document.getElementById("modal");

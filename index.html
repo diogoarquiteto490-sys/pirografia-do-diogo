@@ -45,7 +45,9 @@
   <div id="biografia" class="tab-content">
     <button class="voltar-menu">← Voltar ao menu</button>
     <h2>Biografia do Autor</h2>
-    <p>Diogo é um artista português dedicado à pirografia em madeira.</p>
+    <p>
+      Diogo é um artista português dedicado à pirografia em madeira.
+    </p>
   </div>
 
 </section>
@@ -55,7 +57,7 @@
   <div class="modal-box">
     <span class="close">✕</span>
     <h3 id="modalTitulo"></h3>
-    <img id="modalImg">
+    <img id="modalImg" alt="">
     <p id="modalDesc"></p>
   </div>
 </div>
@@ -97,6 +99,7 @@ const quadros = Array.from({ length: 30 }, (_, i) => ({
 }));
 
 const lista = document.getElementById("listaQuadros");
+const modal = document.getElementById("modal");
 
 quadros.forEach(q => {
   const img = document.createElement("img");
@@ -107,8 +110,6 @@ quadros.forEach(q => {
 });
 
 /* MODAL */
-const modal = document.getElementById("modal");
-
 function abrirModal(q) {
   document.getElementById("modalTitulo").innerText = q.titulo;
   document.getElementById("modalImg").src = q.imagem;

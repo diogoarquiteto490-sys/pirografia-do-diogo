@@ -20,7 +20,6 @@
 <!-- SITE -->
 <section id="site" class="hidden">
 
-  <!-- MENU -->
   <nav class="tabs">
     <button class="tab" data-tab="galeria">Galeria</button>
     <button class="tab" data-tab="encomendas">Encomendas</button>
@@ -37,14 +36,12 @@
   <!-- ENCOMENDAS -->
   <div id="encomendas" class="tab-content">
     <button class="voltar-menu">← Voltar ao menu</button>
-    <h2>Encomendas</h2>
-    <p>Para encomendas personalizadas, entra em contacto.</p>
+    <p>Para encomendas personalizadas entra em contacto.</p>
   </div>
 
   <!-- BIOGRAFIA -->
   <div id="biografia" class="tab-content">
     <button class="voltar-menu">← Voltar ao menu</button>
-    <h2>Biografia do Autor</h2>
     <p>Diogo Fernandes, artista português dedicado à pirografia em madeira.</p>
   </div>
 
@@ -56,23 +53,21 @@
     <span class="close">✕</span>
 
     <div class="modal-conteudo">
-      <!-- IMAGEM -->
       <div class="modal-imagem">
         <img id="modalImg" alt="">
       </div>
 
-      <!-- INFO -->
       <div class="modal-info">
         <h3 id="modalTitulo"></h3>
 
-        <p><strong>Ano de realização:</strong> <span id="modalAno"></span></p>
+        <p><strong>Ano:</strong> <span id="modalAno"></span></p>
         <p><strong>Autor:</strong> <span id="modalAutor"></span></p>
-        <p><strong>Número:</strong> <span id="modalNumero"></span></p>
+        <p><strong>Nº:</strong> <span id="modalNumero"></span></p>
 
-        <h4>Medidas</h4>
-        <p>Comprimento: <span id="modalComp"></span> cm</p>
-        <p>Largura: <span id="modalLarg"></span> cm</p>
-        <p>Espessura: <span id="modalEsp"></span> cm</p>
+        <h4>Medidas (cm)</h4>
+        <p>C: <span id="modalComp"></span></p>
+        <p>L: <span id="modalLarg"></span></p>
+        <p>E: <span id="modalEsp"></span></p>
 
         <h4>Descrição</h4>
         <p id="modalDesc"></p>
@@ -83,77 +78,65 @@
 
 <script>
 /* ENTRAR */
-document.getElementById("entrar").onclick = () => {
-  document.getElementById("capa").style.display = "none";
-  document.getElementById("site").classList.remove("hidden");
+entrar.onclick = () => {
+  capa.style.display = "none";
+  site.classList.remove("hidden");
 };
 
-/* SEPARADORES */
-const tabs = document.querySelectorAll(".tab");
-const contents = document.querySelectorAll(".tab-content");
-
-tabs.forEach(tab => {
+/* MENU */
+document.querySelectorAll(".tab").forEach(tab => {
   tab.onclick = () => {
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
+    document.querySelectorAll(".tab, .tab-content")
+      .forEach(el => el.classList.remove("active"));
     tab.classList.add("active");
     document.getElementById(tab.dataset.tab).classList.add("active");
   };
 });
 
-/* VOLTAR AO MENU */
-document.querySelectorAll(".voltar-menu").forEach(btn => {
-  btn.onclick = () => {
-    contents.forEach(c => c.classList.remove("active"));
-    tabs.forEach(t => t.classList.remove("active"));
-  };
-});
+document.querySelectorAll(".voltar-menu").forEach(b =>
+  b.onclick = () =>
+    document.querySelectorAll(".tab, .tab-content")
+      .forEach(el => el.classList.remove("active"))
+);
 
-/* ===== QUADROS (EXEMPLO + DUPLICAR ATÉ 30) ===== */
-const quadros = [
-  {
-    titulo: "Pequena casa com carrinha",
-    imagem: "quadro1.jpg",
-    ano: "2019",
-    autor: "Diogo Fernandes",
-    numero: "1",
-    comprimento: "17",
-    largura: "13",
-    espessura: "2",
-    descricao: "Na imagem ao lado está fotografado o meu primeiro quadro, uma composição básica para experimentar a técnica do desenho em madeira. Composto por uma casa, carrinha de caixa aberta e alguns efeitos."
-  }
-  // 👉 copia este bloco e altera para os outros quadros
-];
+/* ===== 30 QUADROS ===== */
+const quadros = Array.from({length:30},(_,i)=>({
+  titulo:`Quadro ${i+1}`,
+  imagem:`quadro${i+1}.jpg`,
+  ano:"2019",
+  autor:"Diogo Fernandes",
+  numero:i+1,
+  comprimento:"17",
+  largura:"13",
+  espessura:"2",
+  descricao:"Trabalho artesanal em pirografia sobre madeira, explorando formas simples e composição visual."
+}));
 
 /* GALERIA */
 const lista = document.getElementById("listaQuadros");
-const modal = document.getElementById("modal");
-
-quadros.forEach(q => {
-  const img = document.createElement("img");
-  img.src = q.imagem;
-  img.alt = q.titulo;
-  img.onclick = () => abrirModal(q);
+quadros.forEach(q=>{
+  const img=document.createElement("img");
+  img.src=q.imagem;
+  img.onclick=()=>abrirModal(q);
   lista.appendChild(img);
 });
 
 /* MODAL */
-function abrirModal(q) {
+function abrirModal(q){
   modal.classList.remove("hidden");
-
-  modalImg.src = q.imagem;
-  modalTitulo.innerText = q.titulo;
-  modalAno.innerText = q.ano;
-  modalAutor.innerText = q.autor;
-  modalNumero.innerText = q.numero;
-  modalComp.innerText = q.comprimento;
-  modalLarg.innerText = q.largura;
-  modalEsp.innerText = q.espessura;
-  modalDesc.innerText = q.descricao;
+  modalImg.src=q.imagem;
+  modalTitulo.textContent=q.titulo;
+  modalAno.textContent=q.ano;
+  modalAutor.textContent=q.autor;
+  modalNumero.textContent=q.numero;
+  modalComp.textContent=q.comprimento;
+  modalLarg.textContent=q.largura;
+  modalEsp.textContent=q.espessura;
+  modalDesc.textContent=q.descricao;
 }
 
-document.querySelector(".close").onclick = () => modal.classList.add("hidden");
-modal.onclick = e => { if (e.target === modal) modal.classList.add("hidden"); };
+document.querySelector(".close").onclick=()=>modal.classList.add("hidden");
+modal.onclick=e=>{if(e.target===modal)modal.classList.add("hidden")};
 </script>
 
 </body>

@@ -121,6 +121,25 @@ body {
   color: #f0c040;
 }
 
+/* ENCOMENDAS */
+.botao-encomenda {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background-color: #f0c040; /* Cor de destaque */
+  color: #111;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.botao-encomenda:hover {
+  background-color: #e0b030;
+}
+
 /* VOLTAR */
 .voltar-menu {
   background: #333;

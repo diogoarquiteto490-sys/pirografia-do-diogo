@@ -28,7 +28,7 @@ document.querySelectorAll(".voltar-menu").forEach(btn => {
 
 /* QUADROS */
 const quadros = [
-  { titulo: "Quadro 1", imagem: "quadro1.jpg", descricao: "Descrição detalhada do Quadro 1. Altere este texto para personalizar." },
+  { titulo: "Quadro 1", imagem: "quadro1.jpg", descricao: "teste.1.4 Altere este texto para personalizar." },
   { titulo: "Quadro 2", imagem: "quadro2.jpg", descricao: "Descrição detalhada do Quadro 2. Altere este texto para personalizar." },
   { titulo: "Quadro 3", imagem: "quadro3.jpg", descricao: "Descrição detalhada do Quadro 3. Altere este texto para personalizar." },
   { titulo: "Quadro 4", imagem: "quadro4.jpg", descricao: "Descrição detalhada do Quadro 4. Altere este texto para personalizar." },

@@ -22,9 +22,11 @@
 
   <!-- MENU -->
   <nav class="tabs">
-    <button class="tab" data-tab="galeria">Galeria</button>
-    <button class="tab" data-tab="encomendas">Encomendas</button>
-    <button class="tab" data-tab="biografia">Biografia</button>
+    <ul>
+      <li><button class="tab" data-tab="galeria">Galeria</button></li>
+      <li><button class="tab" data-tab="encomendas">Encomendas</button></li>
+      <li><button class="tab" data-tab="biografia">Biografia</button></li>
+    </ul>
   </nav>
 
   <!-- GALERIA -->
@@ -39,6 +41,7 @@
     <button class="voltar-menu">← Voltar ao menu</button>
     <h2>Encomendas</h2>
     <p>Faz encomendas personalizadas de pirografia em madeira.</p>
+    <p>Para encomendar, por favor contacte o Diogo através do email: <a href="mailto:diogo.arquiteto490@gmail.com">diogo.arquiteto490@gmail.com</a></p>
   </div>
 
   <!-- BIOGRAFIA -->
@@ -62,69 +65,7 @@
   </div>
 </div>
 
-<script>
-/* ENTRAR */
-document.getElementById("entrar").onclick = () => {
-  document.getElementById("capa").style.display = "none";
-  document.getElementById("site").classList.remove("hidden");
-};
-
-/* SEPARADORES */
-const tabs = document.querySelectorAll(".tab");
-const contents = document.querySelectorAll(".tab-content");
-
-tabs.forEach(tab => {
-  tab.onclick = () => {
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
-
-    tab.classList.add("active");
-    document.getElementById(tab.dataset.tab).classList.add("active");
-  };
-});
-
-/* VOLTAR AO MENU */
-document.querySelectorAll(".voltar-menu").forEach(btn => {
-  btn.onclick = () => {
-    contents.forEach(c => c.classList.remove("active"));
-    tabs.forEach(t => t.classList.remove("active"));
-  };
-});
-
-/* QUADROS */
-const quadros = Array.from({ length: 30 }, (_, i) => ({
-  titulo: `Quadro ${i + 1}`,
-  imagem: `quadro${i + 1}.jpg`,
-  descricao: `Descrição detalhada do quadro ${i + 1}.`
-}));
-
-const lista = document.getElementById("listaQuadros");
-const modal = document.getElementById("modal");
-
-quadros.forEach(q => {
-  const img = document.createElement("img");
-  img.src = q.imagem;
-  img.alt = q.titulo;
-  img.onclick = () => abrirModal(q);
-  lista.appendChild(img);
-});
-
-/* MODAL */
-function abrirModal(q) {
-  document.getElementById("modalTitulo").innerText = q.titulo;
-  document.getElementById("modalImg").src = q.imagem;
-  document.getElementById("modalDesc").innerText = q.descricao;
-  modal.classList.remove("hidden");
-}
-
-document.querySelector(".close").onclick = () => {
-  modal.classList.add("hidden");
-};
-
-modal.onclick = e => {
-  if (e.target === modal) modal.classList.add("hidden");
-};
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

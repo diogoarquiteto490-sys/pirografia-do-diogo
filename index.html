@@ -38,46 +38,27 @@
   <div id="encomendas" class="tab-content">
     <button class="voltar-menu">← Voltar ao menu</button>
     <h2>Encomendas</h2>
-    <p>Para encomendas personalizadas, entra em contacto.</p>
+    <p>Faz encomendas personalizadas de pirografia em madeira.</p>
   </div>
 
   <!-- BIOGRAFIA -->
   <div id="biografia" class="tab-content">
     <button class="voltar-menu">← Voltar ao menu</button>
     <h2>Biografia do Autor</h2>
-    <p>Diogo Fernandes, artista português dedicado à pirografia em madeira.</p>
+    <p>
+      Diogo é um artista português dedicado à pirografia em madeira.
+    </p>
   </div>
 
 </section>
 
 <!-- MODAL -->
 <div id="modal" class="modal hidden">
-  <div class="modal-box lateral">
+  <div class="modal-box">
     <span class="close">✕</span>
-
-    <div class="modal-conteudo">
-      <!-- IMAGEM -->
-      <div class="modal-imagem">
-        <img id="modalImg" alt="">
-      </div>
-
-      <!-- INFO -->
-      <div class="modal-info">
-        <h3 id="modalTitulo"></h3>
-
-        <p><strong>Ano de realização:</strong> <span id="modalAno"></span></p>
-        <p><strong>Autor:</strong> <span id="modalAutor"></span></p>
-        <p><strong>Número:</strong> <span id="modalNumero"></span></p>
-
-        <h4>Medidas</h4>
-        <p>Comprimento: <span id="modalComp"></span> cm</p>
-        <p>Largura: <span id="modalLarg"></span> cm</p>
-        <p>Espessura: <span id="modalEsp"></span> cm</p>
-
-        <h4>Descrição</h4>
-        <p id="modalDesc"></p>
-      </div>
-    </div>
+    <h3 id="modalTitulo"></h3>
+    <img id="modalImg" alt="">
+    <p id="modalDesc"></p>
   </div>
 </div>
 
@@ -96,6 +77,7 @@ tabs.forEach(tab => {
   tab.onclick = () => {
     tabs.forEach(t => t.classList.remove("active"));
     contents.forEach(c => c.classList.remove("active"));
+
     tab.classList.add("active");
     document.getElementById(tab.dataset.tab).classList.add("active");
   };
@@ -109,23 +91,13 @@ document.querySelectorAll(".voltar-menu").forEach(btn => {
   };
 });
 
-/* ===== QUADROS (EXEMPLO + DUPLICAR ATÉ 30) ===== */
-const quadros = [
-  {
-    titulo: "Pequena casa com carrinha",
-    imagem: "quadro1.jpg",
-    ano: "2019",
-    autor: "Diogo Fernandes",
-    numero: "1",
-    comprimento: "17",
-    largura: "13",
-    espessura: "2",
-    descricao: "Na imagem ao lado está fotografado o meu primeiro quadro, uma composição básica para experimentar a técnica do desenho em madeira. Composto por uma casa, carrinha de caixa aberta e alguns efeitos."
-  }
-  // 👉 copia este bloco e altera para os outros quadros
-];
+/* QUADROS */
+const quadros = Array.from({ length: 30 }, (_, i) => ({
+  titulo: `Quadro ${i + 1}`,
+  imagem: `quadro${i + 1}.jpg`,
+  descricao: `Descrição detalhada do quadro ${i + 1}.`
+}));
 
-/* GALERIA */
 const lista = document.getElementById("listaQuadros");
 const modal = document.getElementById("modal");
 
@@ -139,21 +111,19 @@ quadros.forEach(q => {
 
 /* MODAL */
 function abrirModal(q) {
+  document.getElementById("modalTitulo").innerText = q.titulo;
+  document.getElementById("modalImg").src = q.imagem;
+  document.getElementById("modalDesc").innerText = q.descricao;
   modal.classList.remove("hidden");
-
-  modalImg.src = q.imagem;
-  modalTitulo.innerText = q.titulo;
-  modalAno.innerText = q.ano;
-  modalAutor.innerText = q.autor;
-  modalNumero.innerText = q.numero;
-  modalComp.innerText = q.comprimento;
-  modalLarg.innerText = q.largura;
-  modalEsp.innerText = q.espessura;
-  modalDesc.innerText = q.descricao;
 }
 
-document.querySelector(".close").onclick = () => modal.classList.add("hidden");
-modal.onclick = e => { if (e.target === modal) modal.classList.add("hidden"); };
+document.querySelector(".close").onclick = () => {
+  modal.classList.add("hidden");
+};
+
+modal.onclick = e => {
+  if (e.target === modal) modal.classList.add("hidden");
+};
 </script>
 
 </body>

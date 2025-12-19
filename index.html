@@ -38,7 +38,7 @@
   <div id="encomendas" class="tab-content">
     <button class="voltar-menu">← Voltar ao menu</button>
     <h2>Encomendas</h2>
-    <p>Faz encomendas personalizadas de pirografia em madeira.</p>
+    <p>Para encomendas personalizadas, entra em contacto.</p>
   </div>
 
   <!-- BIOGRAFIA -->
@@ -46,7 +46,8 @@
     <button class="voltar-menu">← Voltar ao menu</button>
     <h2>Biografia do Autor</h2>
     <p>
-      Diogo é um artista português dedicado à pirografia em madeira.
+      Diogo é um artista português dedicado à pirografia em madeira,
+      criando peças únicas feitas à mão.
     </p>
   </div>
 
@@ -77,7 +78,6 @@ tabs.forEach(tab => {
   tab.onclick = () => {
     tabs.forEach(t => t.classList.remove("active"));
     contents.forEach(c => c.classList.remove("active"));
-
     tab.classList.add("active");
     document.getElementById(tab.dataset.tab).classList.add("active");
   };
@@ -91,38 +91,43 @@ document.querySelectorAll(".voltar-menu").forEach(btn => {
   };
 });
 
-/* QUADROS */
+/* ===== QUADROS (30) ===== */
 const quadros = [
-  {
-    titulo: "Quadro 1 – Árvore da Vida",
-    imagem: "quadro1.jpg",
-    descricao: "Pirografia artesanal em madeira representando a Árvore da Vida."
-  },
-  {
-    titulo: "Quadro 2 – Lobo",
-    imagem: "quadro2.jpg",
-    descricao: "Lobo em pirografia, símbolo de força, liberdade e proteção."
-  },
-  {
-    titulo: "Quadro 3 – Águia",
-    imagem: "quadro3.jpg",
-    descricao: "Águia em voo pirogravada, representando visão e poder."
-  },
-  {
-    titulo: "Quadro 4 – Mandala",
-    imagem: "quadro4.jpg",
-    descricao: "Mandala geométrica feita à mão em madeira."
-  },
-  {
-    titulo: "Quadro 5 – Cavalo",
-    imagem: "quadro5.jpg",
-    descricao: "Cavalo em pirografia, símbolo de liberdade e energia."
-  }
+  { titulo:"Quadro 1 – Árvore da Vida", imagem:"quadro1.jpg", descricao:"Pirografia artesanal em madeira representando a Árvore da Vida." },
+  { titulo:"Quadro 2 – Lobo", imagem:"quadro2.jpg", descricao:"Lobo em pirografia, símbolo de força e liberdade." },
+  { titulo:"Quadro 3 – Águia", imagem:"quadro3.jpg", descricao:"Águia em voo pirogravada em madeira." },
+  { titulo:"Quadro 4 – Mandala", imagem:"quadro4.jpg", descricao:"Mandala geométrica feita à mão." },
+  { titulo:"Quadro 5 – Cavalo", imagem:"quadro5.jpg", descricao:"Cavalo pirogravado, símbolo de energia." },
+  { titulo:"Quadro 6 – Leão", imagem:"quadro6.jpg", descricao:"Leão em pirografia, símbolo de coragem." },
+  { titulo:"Quadro 7 – Coruja", imagem:"quadro7.jpg", descricao:"Coruja pirogravada, símbolo de sabedoria." },
+  { titulo:"Quadro 8 – Elefante", imagem:"quadro8.jpg", descricao:"Elefante artesanal em madeira." },
+  { titulo:"Quadro 9 – Buda", imagem:"quadro9.jpg", descricao:"Buda em pirografia, paz interior." },
+  { titulo:"Quadro 10 – Rosa dos Ventos", imagem:"quadro10.jpg", descricao:"Rosa dos Ventos pirogravada." },
 
-  /* 👉 continua até ao quadro 30 */
+  { titulo:"Quadro 11 – Árvore Sagrada", imagem:"quadro11.jpg", descricao:"Árvore sagrada em madeira." },
+  { titulo:"Quadro 12 – Coração", imagem:"quadro12.jpg", descricao:"Coração pirogravado." },
+  { titulo:"Quadro 13 – Cavalo Tribal", imagem:"quadro13.jpg", descricao:"Cavalo tribal artístico." },
+  { titulo:"Quadro 14 – Lobo Tribal", imagem:"quadro14.jpg", descricao:"Lobo tribal pirogravado." },
+  { titulo:"Quadro 15 – Mandala Solar", imagem:"quadro15.jpg", descricao:"Mandala solar detalhada." },
+  { titulo:"Quadro 16 – Águia Tribal", imagem:"quadro16.jpg", descricao:"Águia tribal em madeira." },
+  { titulo:"Quadro 17 – Gato", imagem:"quadro17.jpg", descricao:"Gato pirogravado." },
+  { titulo:"Quadro 18 – Cão", imagem:"quadro18.jpg", descricao:"Cão em pirografia." },
+  { titulo:"Quadro 19 – Peixe Koi", imagem:"quadro19.jpg", descricao:"Peixe Koi artesanal." },
+  { titulo:"Quadro 20 – Flor de Lótus", imagem:"quadro20.jpg", descricao:"Flor de Lótus pirogravada." },
+
+  { titulo:"Quadro 21 – Dragão", imagem:"quadro21.jpg", descricao:"Dragão artístico em madeira." },
+  { titulo:"Quadro 22 – Fénix", imagem:"quadro22.jpg", descricao:"Fénix, símbolo de renascimento." },
+  { titulo:"Quadro 23 – Mandala Lunar", imagem:"quadro23.jpg", descricao:"Mandala lunar artesanal." },
+  { titulo:"Quadro 24 – Árvore Celta", imagem:"quadro24.jpg", descricao:"Árvore celta pirogravada." },
+  { titulo:"Quadro 25 – Caveira Mexicana", imagem:"quadro25.jpg", descricao:"Caveira mexicana artística." },
+  { titulo:"Quadro 26 – Bússola", imagem:"quadro26.jpg", descricao:"Bússola em pirografia." },
+  { titulo:"Quadro 27 – Coração Tribal", imagem:"quadro27.jpg", descricao:"Coração tribal em madeira." },
+  { titulo:"Quadro 28 – Borboleta", imagem:"quadro28.jpg", descricao:"Borboleta pirogravada." },
+  { titulo:"Quadro 29 – Árvore Minimalista", imagem:"quadro29.jpg", descricao:"Árvore minimalista moderna." },
+  { titulo:"Quadro 30 – Mandala Final", imagem:"quadro30.jpg", descricao:"Mandala final com alto detalhe." }
 ];
 
-
+/* GALERIA */
 const lista = document.getElementById("listaQuadros");
 const modal = document.getElementById("modal");
 
@@ -142,13 +147,8 @@ function abrirModal(q) {
   modal.classList.remove("hidden");
 }
 
-document.querySelector(".close").onclick = () => {
-  modal.classList.add("hidden");
-};
-
-modal.onclick = e => {
-  if (e.target === modal) modal.classList.add("hidden");
-};
+document.querySelector(".close").onclick = () => modal.classList.add("hidden");
+modal.onclick = e => { if (e.target === modal) modal.classList.add("hidden"); };
 </script>
 
 </body>

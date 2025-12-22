@@ -1,8 +1,25 @@
-/* ENTRAR */
-document.getElementById("entrar").onclick = () => {
-  document.getElementById("capa").style.display = "none";
-  document.getElementById("site").classList.remove("hidden");
-};
+/* NAVEGAÇÃO DA CAPA */
+document.querySelectorAll(".capa-botoes button").forEach(btn => {
+  btn.onclick = () => {
+    const targetTab = btn.dataset.target;
+    
+    // 1. Esconder a capa e mostrar o site
+    document.getElementById("capa").style.display = "none";
+    document.getElementById("site").classList.remove("hidden");
+    
+    // 2. Ativar o separador correspondente
+    const targetTabElement = document.querySelector(`.tabs button[data-tab="${targetTab}"]`);
+    if (targetTabElement) {
+      // Ativar o separador no menu
+      document.querySelectorAll(".tabs button").forEach(t => t.classList.remove("active"));
+      targetTabElement.classList.add("active");
+      
+      // Mostrar o conteúdo do separador
+      document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+      document.getElementById(targetTab).classList.add("active");
+    }
+  };
+});
 
 /* SEPARADORES */
 const tabs = document.querySelectorAll(".tab");
@@ -28,7 +45,7 @@ document.querySelectorAll(".voltar-menu").forEach(btn => {
 
 /* QUADROS */
 const quadros = [
-  { titulo: "Quadro 1", imagem: "quadro1.jpg", descricao: "teste.1.4 Altere este texto para personalizar." },
+  { titulo: "Quadro 1", imagem: "quadro1.jpg", descricao: "Descrição detalhada do Quadro 1. Altere este texto para personalizar." },
   { titulo: "Quadro 2", imagem: "quadro2.jpg", descricao: "Descrição detalhada do Quadro 2. Altere este texto para personalizar." },
   { titulo: "Quadro 3", imagem: "quadro3.jpg", descricao: "Descrição detalhada do Quadro 3. Altere este texto para personalizar." },
   { titulo: "Quadro 4", imagem: "quadro4.jpg", descricao: "Descrição detalhada do Quadro 4. Altere este texto para personalizar." },

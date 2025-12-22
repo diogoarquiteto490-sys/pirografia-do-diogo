@@ -40,20 +40,27 @@ body {
   margin-bottom: 20px;
 }
 
-#entrar {
-  margin-top: 20px;
-  padding: 12px 30px;
-  font-size: 1.1rem;
+.capa-botoes {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.capa-botoes button {
+  padding: 12px 25px;
+  font-size: 1rem;
   cursor: pointer;
   background-color: #f0c040; /* Cor de destaque */
   color: #111;
   border: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-#entrar:hover {
+.capa-botoes button:hover {
   background-color: #e0b030;
+  transform: translateY(-2px);
 }
 
 /* SITE */
@@ -232,6 +239,14 @@ body {
 
 /* RESPONSIVIDADE BÁSICA */
 @media (max-width: 600px) {
+  .capa-botoes {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .capa-botoes button {
+    width: 100%;
+  }
   .capa-conteudo {
     padding: 30px;
   }
